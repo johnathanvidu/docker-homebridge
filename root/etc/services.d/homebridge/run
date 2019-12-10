@@ -27,4 +27,11 @@ fi
 
 echo $_HOMEBRIDGE_OPTS
 
+if [ ! -d "/homebridge/node_modules" ]; then
+  mkdir -p /homebridge/node_modules
+fi
+
+echo "Copying existing plugins to node_modules folder"
+cp -R /plugins/. /homebridge/node_modules/
+
 s6-setuidgid abc homebridge $_HOMEBRIDGE_OPTS 2>&1 | tee -a /homebridge/logs/homebridge.log
