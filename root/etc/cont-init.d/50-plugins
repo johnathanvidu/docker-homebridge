@@ -7,6 +7,8 @@ if [ -e /homebridge/package-lock.json ]; then
   rm -rf /homebridge/package-lock.json
 fi
 
+cp /plugins/* /homebridge/node_modules
+
 # install plugins defined in the package.json file, prune others.
 echo "Homebridge: Installing plugins..."
 npm prune
